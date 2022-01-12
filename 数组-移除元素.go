@@ -1,7 +1,7 @@
 ## 数组
 描述：
   移除数组中指定的元素 返回操作后的数组长度
-
+// 暴力、指针法
 func removeElement(nums []int, val int) int {
 	//length := len(nums)
 	//res := 0 // 数组长度
