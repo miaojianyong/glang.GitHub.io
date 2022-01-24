@@ -14,28 +14,23 @@
 
 // 递归
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-	  // check
-    if root == nil {
-        return root
-    }
-    // 相等 直接返回root节点即可
-    if root == p || root == q {
-        return root
-    }
-    // Divide
-    left := lowestCommonAncestor(root.Left, p, q)
-    right := lowestCommonAncestor(root.Right, p, q)
-
-    // Conquer
-    // 左右两边都不为空，则根节点为祖先
-    if left != nil && right != nil {
-        return root
-    }
-    if left != nil {
-        return left
-    }
-    if right != nil {
-        return right
-    }
-    return nil
+	// 如当前节点为空 或 找到q或p节点 就返回当前节点
+	if root == nil || root == p || root == q {
+		return root
+	}
+	// 记录左右子树的返回值
+	left := lowestCommonAncestor(root.Left, p, q)   // 左
+	right := lowestCommonAncestor(root.Right, p, q) // 右
+	// 处理左右子树的返回值
+	// 如果左右子树的返回值都不为空 就返回当前节点
+	if left != nil && right != nil {
+		return root
+	}
+	if left != nil { // 如左子树不为空 就返回左子树
+		return left
+	}
+	if right != nil { // 如右子树不为空 就返回左子树
+		return right
+	}
+	return nil // 否则 返回空
 }
