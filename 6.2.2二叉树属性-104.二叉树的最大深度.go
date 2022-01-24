@@ -8,11 +8,16 @@ func max (a, b int) int {
     return b;
 }
 // 递归
-func maxdepth(root *treenode) int {
+func maxDepth(root *treenode) int {
     if root == nil {
         return 0;
     }
-    return max(maxdepth(root.left), maxdepth(root.right)) + 1;
+    leftDepth := maxDepth(root.Left)        // 左
+	rightDepth := maxDepth(root.Right)      // 右
+	depth := max(leftDepth, rightDepth) + 1 // 中
+	return depth
+	// 简写
+	//return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
 }
 // 迭代
 func maxdepth(root *treenode) int {
